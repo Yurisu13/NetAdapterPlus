@@ -9,6 +9,7 @@ Si tu es sur un environnement **Windows**, que tu es **administrateur** de ton p
 ## Comment ça s'installe ?
 Pas de panique, PowerShell est inclut par défaut sur les systèmes d'exploitations Windows, tu dois juste récupérer mon script !
 
-Tu devras ensuite t'assurer que l'**ExecutionPolicy** de ton PowerShell est défini au maximum sur "RemoteSigned".
+Tu devras ensuite t'assurer que l'**ExecutionPolicy** de ton PowerShell est défini au maximum sur "RemoteSigned". \
+Il faut alors lancer PowerShell en tant qu'administrateur et exécuter la commande suivante :
 
     Set-ExecutionPolicy RemoteSigned
