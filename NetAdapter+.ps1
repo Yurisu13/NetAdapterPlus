@@ -126,14 +126,18 @@ function Show-Menu {
 # Début Programme
 Show-Menu -selected $selectedOption
 
-#Boucle permettant l'interaction
+# Boucle infinie permettant l'interaction continue
 while ($true) {
     $keyInfo = [System.Console]::ReadKey($true)
     
+    # Différentes touches qui génèrent une action :
     switch ($keyInfo.Key) {
+
+        # "Echap" pour quitter le script
         "Escape" {
             Exit
         }
+        # "Flèche du haut" pour monter dans le menu
         "UpArrow" {
             if ($selectedOption -ne [Math]::Max(0, $selectedOption - 1)) {
                 $selectedOption -= 1
@@ -141,6 +145,7 @@ while ($true) {
                 Show-Menu -selected $selectedOption
             }
         }
+        # "Flèche du bas" pour descendre dans le menu
         "DownArrow" {
             if ($selectedOption -ne [Math]::Min($netAdapters.Count - 1, $selectedOption + 1)) {
                 $selectedOption += 1
@@ -148,6 +153,7 @@ while ($true) {
                 Show-Menu -selected $selectedOption
             }
         }
+        # "Entrée" pour sélectionner une option du menu
         "Enter" {
             if (($netAdapters[$selectedOption]).Status -eq "Disabled") {
                 Write-Host " Activation de la carte" $netAdapters[$selectedOption].Name"..." -ForegroundColor Cyan
@@ -162,5 +168,7 @@ while ($true) {
                 Show-Menu -selected $selectedOption
             }
         }
+        # Valeur par défaut
+        Default {}
     }
 }
